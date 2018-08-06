@@ -13,10 +13,6 @@ if [ "$1" = 'redis-cluster' ]; then
       mkdir -p /redis-conf/${port}
       mkdir -p /redis-data/${port}
 
-      if [ -e /redis-data/${port}/nodes.conf ]; then
-        rm /redis-data/${port}/nodes.conf
-      fi
-
       if [ "$port" -lt "7006" ]; then
         PORT=${port} envsubst < /redis-conf/redis-cluster.tmpl > /redis-conf/${port}/redis.conf
       else
